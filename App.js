@@ -9,7 +9,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-
+import  Header  from './compnents/Header'
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const Section = ({children, title}): Node => {
@@ -47,6 +47,7 @@ const App: () => Node = () => {
 
   return (
     <SafeAreaView style={backgroundStyle}>
+      <Header></Header>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
