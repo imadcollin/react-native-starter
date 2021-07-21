@@ -9,8 +9,10 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import  Header  from './compnents/Header'
+import Header from './compnents/Header';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import Item from './compnents/Item';
+import PressButton from './compnents/PressButton';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -48,6 +50,8 @@ const App: () => Node = () => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <Header></Header>
+      <Item> </Item>
+      <PressButton></PressButton>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
@@ -56,7 +60,7 @@ const App: () => Node = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Main">Hello World from App.js!</Section>
+          <Section title="Main">Hello World fromsss App.js!</Section>
         </View>
       </ScrollView>
     </SafeAreaView>
