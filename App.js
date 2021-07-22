@@ -11,8 +11,8 @@ import {
 } from 'react-native';
 import Header from './compnents/Header';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import Item from './compnents/Item';
-import PressButton from './compnents/PressButton';
+import Item from './compnents/Items/Item';
+import PressButton from './compnents/PressButton/PressButton';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
