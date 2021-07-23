@@ -1,17 +1,17 @@
 /* eslint-disable */
 import React from 'react';
-import {View, Text, Pressable} from 'react-native';
-
+import {SafeAreaView, View, Text, Pressable, Button} from 'react-native';
+import ButtonStyles from './ButtonStyle';
 const PressButton = () => {
   return (
-    <View>
-      <Pressable
-        onPress={() => {
-          console.warn('button is pressed');
-        }}>
-        <Text> Press</Text>
-      </Pressable>
-    </View>
+    <SafeAreaView style={ButtonStyles.container}>
+      <View>
+        <Text style={ButtonStyles.title}>Press </Text>
+        <Button title="Click" onPress={() => console.warn('button clicked')}>
+          {' '}
+        </Button>
+      </View>
+    </SafeAreaView>
   );
 };
 
