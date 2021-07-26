@@ -1,6 +1,7 @@
 import React from 'react';
 import type {Node} from 'react';
 import {
+  FlatList,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -14,6 +15,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Item from './compnents/Items/Item';
 import PressButton from './compnents/PressButton/PressButton';
 
+import data from './data';
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
@@ -50,8 +52,13 @@ const App: () => Node = () => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <Header></Header>
-      <Item> </Item>
-      <PressButton></PressButton>
+
+      <PressButton
+        type="yellow"
+        content="SomeData"
+        callback={() => {
+          console.warn('smeData');
+        }}></PressButton>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
@@ -63,6 +70,11 @@ const App: () => Node = () => {
           <Section title="Main">Hello World fromsss App.js!</Section>
         </View>
       </ScrollView>
+      <FlatList
+        data={data}
+        renderItem={x => <Item info={x.item}></Item>}
+        keyExtractor={item => item.id}></FlatList>
+      {/* <Item info={data[1]}></Item> */}
     </SafeAreaView>
   );
 };
