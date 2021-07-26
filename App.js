@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import type {Node} from 'react';
 import {
+  Button,
   FlatList,
   SafeAreaView,
   ScrollView,
@@ -44,9 +45,35 @@ const Section = ({children, title}): Node => {
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
-
+  const [index, setIndex] = useState(0);
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
+
+  const next = () => {
+    console.log(index);
+    if (data.length < index) {
+      alert('No Elements!');
+    }
+
+    if (!_isEmpty() && data.length > index + 1) {
+      setIndex(index + 1);
+      return data[index];
+    }
+    alert('Last Elements!');
+  };
+
+  const back = () => {
+    console.log(index);
+
+    if (!_isEmpty() && index != 0) {
+      setIndex(index - 1);
+      return data[index - 1];
+    }
+    alert('First Element!');
+  };
+  const _isEmpty = () => {
+    return data.length < 0;
   };
 
   return (
@@ -75,6 +102,14 @@ const App: () => Node = () => {
         renderItem={x => <Item info={x.item}></Item>}
         keyExtractor={item => item.id}></FlatList>
       {/* <Item info={data[1]}></Item> */}
+      <Button color="grey" title="bext" onPress={next}>
+        next
+      </Button>
+      <Button title="prev" onPress={back}>
+        {' '}
+        prev
+      </Button>
+      <Item info={data[index]}></Item>
     </SafeAreaView>
   );
 };
