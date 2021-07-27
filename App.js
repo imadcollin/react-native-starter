@@ -11,12 +11,12 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import Header from './compnents/Header';
+import Header from './src/componants/Headers/Header';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import Item from './compnents/Items/Item';
-import PressButton from './compnents/PressButton/PressButton';
+import Item from './src/componants/Items/Item';
+import PressButton from './src/componants/PressButton/PressButton';
 
-import data from './data';
+import data from './src/constants/data';
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
