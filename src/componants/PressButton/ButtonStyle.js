@@ -5,7 +5,7 @@ import {StyleSheet} from 'react-native';
 
 const ButtonStyles = StyleSheet.create({
   container: {
-    flex: 1,
+    display: 'flex',
     justifyContent: 'center',
     marginHorizontal: 16,
   },

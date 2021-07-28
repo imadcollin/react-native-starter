@@ -6,7 +6,6 @@ const PressButton = () => {
   return (
     <SafeAreaView style={ButtonStyles.container}>
       <View>
-        <Text style={ButtonStyles.title}>Press </Text>
         <Button title="Click" onPress={() => console.warn('button clicked')}>
           {' '}
         </Button>
