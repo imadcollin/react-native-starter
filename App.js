@@ -1,54 +1,19 @@
 import React, {useState} from 'react';
-import type {Node} from 'react';
 import {
   Button,
   FlatList,
   SafeAreaView,
   ScrollView,
-  StatusBar,
-  StyleSheet,
   Text,
-  useColorScheme,
   View,
 } from 'react-native';
 import Header from './src/componants/Headers/Header';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Item from './src/componants/Items/Item';
-import PressButton from './src/componants/PressButton/PressButton';
 
 import data from './src/constants/data';
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+import AppStyles from './AppStyle';
+const App = () => {
   const [index, setIndex] = useState(0);
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
 
   const next = () => {
     console.log(index);
@@ -77,31 +42,18 @@ const App: () => Node = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView style={AppStyles.container}>
       <Header></Header>
 
-      <PressButton
-        type="yellow"
-        content="SomeData"
-        callback={() => {
-          console.warn('smeData');
-        }}></PressButton>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Main">Hello World fromsss App.js!</Section>
+      <ScrollView>
+        <View style={AppStyles.view}>
+          <Text>Hello World fromsss App.js!</Text>
         </View>
       </ScrollView>
       <FlatList
         data={data}
         renderItem={x => <Item info={x.item}></Item>}
         keyExtractor={item => item.id}></FlatList>
-      {/* <Item info={data[1]}></Item> */}
       <Button color="grey" title="bext" onPress={next}>
         next
       </Button>
@@ -113,24 +65,4 @@ const App: () => Node = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
 export default App;
